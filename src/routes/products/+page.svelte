@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { Card, CardHeader, CardTitle, CardContent } from "$lib/components/ui/card";
+  import { Button } from "$lib/components/ui/button";
+
   const products = [
     {
       id: 1,
@@ -25,7 +28,7 @@
       year: "2024"
     },
     {
-      id: 1,
+      id: 4,
       name: "Minimalist Chair",
       description: "A beautifully crafted chair that combines comfort with minimalist design principles.",
       image: "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1",
@@ -33,7 +36,7 @@
       year: "2024"
     },
     {
-      id: 2,
+      id: 5,
       name: "Ceramic Vase",
       description: "Handcrafted ceramic vase with a unique texture and organic form.",
       image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38",
@@ -41,7 +44,7 @@
       year: "2023"
     },
     {
-      id: 3,
+      id: 6,
       name: "Wooden Shelf",
       description: "Sustainable wooden shelf system that adapts to your space.",
       image: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126",
@@ -65,8 +68,8 @@
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
   <div class="text-center mb-12">
-    <h1 class="text-4xl font-bold text-gray-900 mb-4">Our Collection</h1>
-    <p class="text-xl text-gray-600">Discover our curated selection of innovative designs</p>
+    <h1 class="text-4xl font-bold text-gray-900 mb-4">The Collection</h1>
+    <p class="text-xl text-gray-600">Discover the selection of innovative designs</p>
   </div>
 
   <div class="mb-8 flex flex-col sm:flex-row gap-4 justify-between items-center">
@@ -92,25 +95,26 @@
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     {#each filteredProducts as product}
-      <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-        <div class="aspect-w-16 aspect-h-9">
+      <Card class="overflow-hidden hover:shadow-lg transition-shadow duration-200">
+        <CardHeader class="p-0">
           <img
             src={product.image}
             alt={product.name}
             class="w-full h-64 object-cover"
           />
-        </div>
-        <div class="p-6">
+        </CardHeader>
+        <CardContent class="p-6">
           <div class="flex justify-between items-start mb-2">
             <h3 class="text-xl font-semibold text-gray-900">{product.name}</h3>
             <span class="text-sm text-gray-500">{product.year}</span>
           </div>
           <p class="text-gray-600 mb-4">{product.description}</p>
-          <div class="flex justify-between items-center text-sm text-gray-500">
-            <span>{product.category}</span>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-500">{product.category}</span>
+            <Button variant="outline">View Details</Button>
           </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     {/each}
   </div>
 </div> 

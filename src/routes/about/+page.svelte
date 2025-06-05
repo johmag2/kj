@@ -1,4 +1,6 @@
 <script>
+  import { Card, CardHeader, CardTitle, CardContent } from "$lib/components/ui/card";
+
   const concept = {
     name: "Studio KJ",
     vision: "A curated space where design meets innovation",
@@ -37,10 +39,14 @@
 
     <div class="grid md:grid-cols-3 gap-8 mt-12">
       {#each concept.values as value}
-        <div class="bg-white p-6 rounded-lg shadow-sm">
-          <h3 class="text-xl font-bold mb-4">{value.title}</h3>
-          <p class="text-gray-600">{value.description}</p>
-        </div>
+        <Card class="hover:shadow-lg transition-shadow duration-200">
+          <CardHeader>
+            <CardTitle class="text-xl font-bold mb-4">{value.title}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p class="text-gray-600">{value.description}</p>
+          </CardContent>
+        </Card>
       {/each}
     </div>
 
